@@ -5,4 +5,3 @@ export type NewsItemType = {
     link: string;
     isImportant: boolean;
 };
-  
