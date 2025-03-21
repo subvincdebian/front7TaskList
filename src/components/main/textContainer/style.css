@@ -1,0 +1,37 @@
+.news-container {
+    width: 300px;
+    border: 2px solid red;
+    padding: 10px;
+    background: white;
+    border-radius: 5px;
+}
+  
+.news-item {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+    border-bottom: 1px solid white;
+}
+  
+.news-item:last-child {
+    border-bottom: none;
+}
+  
+.news-time {
+    color: red;
+    font-weight: bold;
+    margin-right: 8px;
+    min-width: 45px;
+    text-align: right;
+}
+  
+.news-text {
+    flex: 1;
+    font-size: 14px;
+}
+  
+.highlighted {
+    background: white;
+    font-weight: bold;
+    padding: 5px;
+}
