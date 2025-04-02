@@ -1,19 +1,17 @@
-import './style.css';
-import { newsList } from '../../../fixture/newsContainer';
+import { ReactNode } from "react";
+import './style.css'
 
-const NewsList = () => {
+type LayoutProps = {
+  children: ReactNode;
+};
+
+const Layout = ({ children }: LayoutProps) => {
   return (
-    <div className="news-container">
-      <ul>
-        {newsList.map((item) => (
-          <li key={item.id} className={`news-item ${item.isImportant ? 'highlighted' : ''}`}>
-            <span className="news-time">{item.time}</span>
-            <a href={item.link} className="news-title">{item.title}</a>
-          </li>
-        ))}
-      </ul>
+    <div className="container">
+      <h1>Список справ</h1>
+      {children}
     </div>
   );
 };
 
-export default NewsList;
+export default Layout;

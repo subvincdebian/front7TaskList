@@ -1,17 +1,41 @@
-import './App.css';
-import NewsList from './components/main/textContainer/index';
-import BlogPost from './components/main/textContainer/indexblog';
+import { useState } from "react";
 
+import { Do } from "./type/mainPage";
+import Layout from "./components/main/textContainer/index";
+import DoList from "./components/main/textContainer/dolist";
 
 function App() {
+
+  const [dos, setEvent] = useState<Do[]>([]);
+  const [task, setTask] = useState("");
+
+  const handleClick = () => {
+    if (!task.trim()) return;
+    setEvent([...dos, { id: Date.now(), name: task, isActive: true }]);
+    setTask("");
+  };
+
+  const toggleDo = (id: number) => {
+    setEvent(
+      dos.map((doItem) =>
+        doItem.id === id ? { ...doItem, isActive: !doItem.isActive } : doItem
+      )
+    );
+  };
+
   return (
-    <div className="App">
-      <h1>Новини (Практика 1 рівня:)</h1>
-      <NewsList />
-      <h1>Блог (Практика 2 рівня:)</h1>
-      <BlogPost />
-    </div>
+    <Layout>
+      <div>
+        <input
+          type="text"
+          value={task}
+          onChange={(e) => setTask(e.target.value)}
+           placeholder="Додати нову справу"/>
+        <button onClick={handleClick}>Додати</button>
+      </div>
+      <DoList dos={dos} toggleDo={toggleDo} />
+    </Layout>
   );
-}
+};
 
 export default App;
